@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from markdown2 import Markdown
 import random
-
+from django.http import HttpResponseRedirect
 from . import util
+from django.urls import reverse
 
 # Function to convert Markdown content to HTML
 def convert_md_to_html(title):
@@ -114,3 +115,26 @@ def random_page(request):
         "title": random_entry,
         "content": html_content
     })
+
+def delete_page(request):
+    all_entries = util.list_entries()
+    return render(request, "encyclopedia/delete_page.html",{
+        "all_entries": all_entries
+    })
+
+def delete_entry(request):
+    if request.method == 'GET':
+        title = request.GET.get('title', None)
+        if title:
+            # Delete the entry
+            util.delete_entry(title)
+            # Redirect to the index page or another appropriate page
+            return HttpResponseRedirect(reverse('index'))
+        else:
+            # Handle case where title parameter is missing
+            return render(request, "encyclopedia/error.html", {
+                "message": "Title parameter is missing."
+            })
+    else:
+        # Handle non-GET requests
+        return HttpResponseNotAllowed(['GET'])

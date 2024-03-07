@@ -1,0 +1,27 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block body %}
+    <!-- Display a heading for the deletion page -->
+    <h1>Which page do you want to delete?</h1>
+
+    <!-- Display a list of all entries with links -->
+    <ul>
+        {% for entry in all_entries %}
+            <li>
+                <!-- Create a clickable link for each entry -->
+                <a href="#" onclick="confirmDelete('{{ entry }}')">{{ entry }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <!-- JavaScript function to confirm deletion -->
+    <script>
+        function confirmDelete(entry) {
+            // Display a confirmation dialog
+            if (confirm("Are you sure you want to delete '" + entry + "'?")) {
+                // If confirmed, redirect to delete_entry view with the entry title
+                window.location.href = "{% url 'delete_entry' %}?title=" + encodeURIComponent(entry);
+            }
+        }
+    </script>
+{% endblock %}
