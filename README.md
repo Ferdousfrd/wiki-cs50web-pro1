@@ -1,6 +1,6 @@
 # My Wiki Web Application
 
-This is a simple wiki web application built using Django, a web framework in Python. The project allows users to view, edit, create, and search for encyclopedia entries.
+This is a simple wiki web application built using Django, a web framework in Python. The project allows users to view, edit, create, search, and delete encyclopedia entries.
 
 ## Features
 
@@ -8,6 +8,7 @@ This is a simple wiki web application built using Django, a web framework in Pyt
 - **Edit Entries**: Edit existing encyclopedia entries to update their content.
 - **Create Entries**: Add new encyclopedia entries with titles and content.
 - **Search Entries**: Search for specific encyclopedia entries by keyword.
+- **Delete Entries**: Delete existing encyclopedia entries.
 - **Markdown Support**: Content of entries can be written in Markdown for formatting.
 
 ## Getting Started
@@ -20,6 +21,7 @@ git clone https://github.com/yourusername/your-repository.git
 
 2. **Navigate to the Project Directory**: 
 cd your-repository
+
 
 3. **Install Dependencies**: 
 pip install -r requirements.txt
