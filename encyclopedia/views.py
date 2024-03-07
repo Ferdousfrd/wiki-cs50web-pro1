@@ -2,8 +2,10 @@ from django.shortcuts import render
 from markdown2 import Markdown
 import random
 from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotAllowed
 from . import util
 from django.urls import reverse
+
 
 # Function to convert Markdown content to HTML
 def convert_md_to_html(title):
